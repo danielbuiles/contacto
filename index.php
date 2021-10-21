@@ -1,3 +1,8 @@
+<?php 
+include('./controllers/indexController.php');
+
+$controller = new IndexController();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +20,7 @@
             Gracias por tomarse el tiempo para hablar conmigo
           </p>
         </header>
-        <form id="survey-form" method="POST" action="./controllers/indexController.php">
+        <form id="survey-form" method="POST">
           <div class="form-group">
             <label id="name-label" for="name">Nombre</label>
             <input

@@ -2,22 +2,19 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php';
+require './vendor/autoload.php';
 
 class Email
 {
-    private $myEmail;
-    private $password;
+    private $myEmail="agendawebbuiles@gmail.com";
+    private $password="Rafaelsword1?";
     private $email;
 
     function __construct($email){
         $this->email = $email;
-        $this->myEmail = 'agendawebbuiles@gmail.com';
-        $this->password = 'Rafaelsword1?';
-        $this->enviarEmail();
     }
 
-    function enviarEmail(){
+    public function enviarEmail(){
         $mail = new PHPMailer(true);
 
         try {
@@ -41,7 +38,6 @@ class Email
             $mail->Body    = '<b> Hola me encanta decirte que tu proyecto fue recibido te daremos respuestas lo antes posible a este correo ;D</b>';
 
             $mail->send();
-            echo 'el mensaje a sido enviado';
 
         } catch (Exception $e) {
             echo "error al enviar mensaje: {$mail->ErrorInfo}";

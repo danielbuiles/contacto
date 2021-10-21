@@ -1,22 +1,33 @@
 <?php 
-    include '../models/baseDatos.php';
-    include '../models/email.php';
+    require './models/baseDatos.php';
+    require './models/email.php';
 
-    if(isset($_POST['btn'])){
-        $nombre = $_POST['name'];
-        $email = $_POST['email'];
-        $enfoque = $_POST['enfoque'];
-        $especificaciones = $_POST['especificaciones'];
-        $comentario = $_POST['comentario'];
+    class IndexController extends BaseDatos
+    {
+        public function __construct(){
+            $this->enviarFormulario();
+        }
 
-        //se llevan los datos a la base de datos
-        $db =new BaseDatos();
-        $consultaSQL="INSERT INTO personas(nombre, email, enfoque, especificaciones, comentario) VALUES ('$nombre','$email','$enfoque','$especificaciones','$comentario')";
-        $db->registro($consultaSQL);
+        public function enviarFormulario(){
 
-        //se le envia el email al cliente
-        $email=new Email($email);
+            if(isset($_POST['btn'])){
+                $nombre = $_POST['name'];
+                $email = $_POST['email'];
+                $enfoque = $_POST['enfoque'];
+                $especificaciones = $_POST['especificaciones'];
+                $comentario = $_POST['comentario'];
+        
+                //se llevan los datos a la base de datos
+                $consultaSQL="INSERT INTO personas(nombre, email, enfoque, especificaciones, comentario) VALUES ('$nombre','$email','$enfoque','$especificaciones','$comentario')";
+                $this->registro($consultaSQL);
+        
+                //se le envia el email al cliente
+                $email=new Email($email);
+                $email->enviarEmail();
+            }
 
-        header('Location: ../index.php');
+        }
+
     }
+    
 ?>

@@ -2,8 +2,8 @@
 
 class BaseDatos
 {
-    public $user='root';
-    public $password="";
+    private $user='root';
+    private $password="";
 
     public function Conexion_DB(){
         try 
