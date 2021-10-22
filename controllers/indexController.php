@@ -5,7 +5,7 @@
     class IndexController extends BaseDatos
     {
         public function __construct(){
-            $this->enviarFormulario();
+            
         }
 
         public function enviarFormulario(){

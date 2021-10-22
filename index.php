@@ -2,6 +2,8 @@
 include('./controllers/indexController.php');
 
 $controller = new IndexController();
+$controller->enviarFormulario();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
